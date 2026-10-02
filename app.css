@@ -1,0 +1,13 @@
+body {
+    background: linear-gradient(135deg, #F3E5AB, #D4AF37, #C68B59, #8B4513);
+    min-height: 100dvh;
+}
+
+.title1 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: rgba(240, 255, 240, 0.241);
+}
+
+
