@@ -1,158 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OneMinute Fun</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OneMinute Fun</title>
 </head>
 <style>
-    body {
-    background: linear-gradient(135deg, #F3E5AB, #D4AF37, #C68B59, #8B4513);
-    min-height: 100dvh;
-    margin: 0;
-    text-align: center;
-    }
-    .title1 {
-        font-size: 3.5rem;
-        margin: 0;
-        padding: 1rem;
-        font-family: 'Courier New', Courier, monospace;
-        background-color: rgba(240, 255, 240, 0.241);
-    }
-    .caption {
-        margin-top: 0;
-        color: rgb(127, 9, 246);
-        font-size: 10px;
-    }
-    .challenge-title {
-        color: red;
-        font-size: 2rem;
-        margin-top: 3rem;
-    }
-    #challenge {
-        font-size: 1.5rem;
-        font-weight: bold;
-        min-height: 2rem;
-        margin: 1.5rem auto;
-        max-width: 70%;
-    }
-    .timer {
-        font-size: 1.2rem;
-        font-weight: bold;
-        margin: 1rem 0;
-    }
-    #timer {
-        font-size: 4rem;
-        font-family: 'Courier New', Courier, monospace;
-        font-weight: bold;
-    }
-    button {
-        margin: 1rem auto;
-        padding: 0.8rem 1.5rem;
-        font-size: 1rem;
-        font-weight: bold;
-        cursor: pointer;
-        border: 2px solid black;
-        border-radius: 8px;
-        background: #fff4cf;
-    }
-    button:hover {
-        transform: scale(1.05);
-    }
-    .completed {
-        margin-top: 2rem;
-        font-size: 1.3rem;
-    }
-    [hidden] {
-        display: none !important;
-    }
+body {
+background: linear-gradient(135deg, #F3E5AB, #D4AF37, #C68B59, #8B4513);
+min-height: 100dvh;
+margin: 0;
+text-align: center;
+}
+.title1 {
+font-size: 3.5rem;
+margin: 0;
+padding: 1rem;
+font-family: 'Courier New', Courier, monospace;
+background-color: rgba(240, 255, 240, 0.241);
+}
+.caption {
+margin-top: 0;
+color: rgb(127, 9, 246);
+font-size: 10px;
+}
+.challenge-title {
+color: red;
+font-size: 2rem;
+margin-top: 3rem;
+}
+#challenge {
+font-size: 1.5rem;
+font-weight: bold;
+min-height: 2rem;
+margin: 1.5rem auto;
+max-width: 70%;
+}
+.timer {
+font-size: 1.2rem;
+font-weight: bold;
+margin: 1rem 0;
+}
+#timer {
+font-size: 4rem;
+font-family: 'Courier New', Courier, monospace;
+font-weight: bold;
+}
+button {
+margin: 1rem auto;
+padding: 0.8rem 1.5rem;
+font-size: 1rem;
+font-weight: bold;
+cursor: pointer;
+border: 2px solid black;
+border-radius: 8px;
+background: #fff4cf;
+}
+button:hover {
+transform: scale(1.05);
+}
+.completed {
+margin-top: 2rem;
+font-size: 1.3rem;
+}
+[hidden] {
+display: none !important;
+}
 </style>
 <script>
-    const challenges=[
-    "Do 10 push-ups",
-    "Draw a cat without lifting your pen",
-    "Find something older than you",
-    "Write your name with your opposite hand",
-    "Find 5 blue objects",
-    "Balance on one foot for 30 seconds",
-    "Name 10 countries",
-    "Do 15 jumping jacks",
-    "Make a paper airplane",
-    "Draw yourself in 60 seconds"
+const challenges=[
+"Do 10 push-ups",
+"Draw a cat without lifting your pen",
+"Find something older than you",
+"Write your name with your opposite hand",
+"Find 5 blue objects",
+"Balance on one foot for 30 seconds",
+"Name 10 countries",
+"Do 15 jumping jacks",
+"Make a paper airplane",
+"Draw yourself in 60 seconds"
 ];
 let timer;
-function beep() {
-    let audio = new AudioContext();
-    let beep = audio.createOscillator();
-    beep.connect(audio.destination);
-    beep.start();
-    beep.stop(audio.currentTime + 0.2);
+function b() {
+let audio = new AudioContext();
+let beep = audio.createOscillator();
+beep.connect(audio.destination);
+beep.start();
+beep.stop(audio.currentTime + 0.2);
 }
-function RandomChallenge() {
-    let randomIndex = Math.floor(Math.random() * challenges.length);
-    let challenge = challenges[randomIndex];
-    document.getElementById("done-btn").hidden = false;
-    a = document.getElementById("challenge");
-    a.textContent = challenge;
-    Countdown();
+function RC() {
+let randomIndex = Math.floor(Math.random() * challenges.length);
+let challenge = challenges[randomIndex];
+document.getElementById("done-btn").hidden = false;
+a = document.getElementById("challenge");
+a.textContent = challenge;
+Countdown();
 }
 function Countdown() {
-    clearInterval(timer);
-    let timeLeft = 3;
-    let time = document.getElementById("timer");
-    time.textContent = timeLeft;
-    timer = setInterval(() => {
-        timeLeft--;
-        time.textContent = timeLeft;
-        if (timeLeft === 0) {
-            document.getElementById("done-btn").hidden = true;
-            clearInterval(timer);
-            beep();
-            console.log("done");
-        }
-    }, 1000);
+clearInterval(timer);
+let timeLeft = 3;
+let time = document.getElementById("timer");
+time.textContent = timeLeft;
+timer = setInterval(() => {
+timeLeft--;
+time.textContent = timeLeft;
+if (timeLeft === 0) {
+document.getElementById("done-btn").hidden = true;
+clearInterval(timer);
+b();
+console.log("done");
+}
+}, 1000);
 }
 function CompleteChallenge() {
-    clearInterval(timer);
-    document.getElementById("done-btn").hidden = true;
-    let completed = Number(localStorage.getItem("completed")) || 0;
-    completed++;
-    localStorage.setItem("completed", completed);
-    document.getElementById("completed").textContent = completed;
-    document.getElementById("timer").textContent = "DONE!";
+clearInterval(timer);
+document.getElementById("done-btn").hidden = true;
+let completed = Number(localStorage.getItem("completed")) || 0;
+completed++;
+localStorage.setItem("completed", completed);
+document.getElementById("completed").textContent = completed;
+document.getElementById("timer").textContent = "DONE!";
 }
 function ShowAbout(){
-    game.hidden = true;
-    about.hidden = false;
+game.hidden = true;
+about.hidden = false;
 }
 function SG(){
-    about.hidden = true;
-    game.hidden = false;
+about.hidden = true;
+game.hidden = false;
 }
 </script>
-
 <body>
-    <div id="game">
-    <h1 class="title1">One Minute</h1>
-    <p class="caption">What all can you do in a Minute?</p>
-    <h2 class="challenge-title">Your Challenge</h2>
-    <p id="challenge"></p>
-    <p class="timer">Time left: <span id="timer"></span></p>
-    <button id="done-btn" onclick="CompleteChallenge()" hidden>I Did It!</button>
-    <div class="start-challenge">
-    <button onclick="RandomChallenge()">Give me a challenge!</button>
-    </div>
-    <br/>
-    <h2><span>Completed challenges: <span id="completed">0</span>(for now)</span> </h2>
-    <button onclick="ShowAbout()">About ⏭</button>
-    </div>
-    <div id="about" hidden>
-    <h1>About</h1>
-        <ul>Relax! Breathe in.</ul>
-        <p>Press the "Give me a challenge button"</p>
-        <p>DO the challenge while the <strong>timer</strong> ticks</p>
-        <p>Press I did it before the beep to win.</p>
-    <button onclick="SG()">Back</button>
-    </div>
+<div id="game">
+<h1 class="title1">One Minute</h1>
+<p class="caption">What all can you do in a Minute?</p>
+<h2 class="challenge-title">Your Challenge</h2>
+<p id="challenge"></p>
+<p class="timer">Time left: <span id="timer"></span></p>
+<button id="done-btn" onclick="CompleteChallenge()" hidden>I Did It!</button>
+<div class="start-challenge">
+<button onclick="RC()">Give me a challenge!</button>
+</div>
+<br/>
+<h2><span>Completed challenges: <span id="completed">0</span>(for now)</span> </h2>
+<button onclick="ShowAbout()">About ⏭</button>
+</div>
+<div id="about" hidden>
+<h1>About</h1>
+<ul>Relax! Breathe in.</ul>
+<p>Press the "Give me a challenge button"</p>
+<p>DO the challenge while the <strong>timer</strong> ticks</p>
+<p>Press I did it before the beep to win.</p>
+<button onclick="SG()">Back</button>
+</div>
 </body>
 </html>
