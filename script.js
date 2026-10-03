@@ -28,19 +28,25 @@ function RandomChallenge() {
 
     a = document.getElementById("challenge");
     a.textContent = challenge;
+    Countdown();
 }
 
 function Countdown() {
-    let timeLeft = 60;
+    let timeLeft = 3;
+    time = document.getElementById("timer");
+    time = time.textContent= timeLeft;
     console.log(timeLeft)
-    setInterval(() => {
+    timer = setInterval(() => {
         timeLeft--;
-        if (timeLeft <= 0) {
-            console.log("done");    
-            clearInterval();
-        }
         console.log(timeLeft);
+        
+        time = document.getElementById("timer");
+        time.textContent = timeLeft;
+        if (timeLeft == 0) {
+            clearInterval(timer);
+            console.log("done"); 
+            new Audio("beep.mp3").play();
+        }
     }, 1000)
+    
 }
-
-Countdown();
