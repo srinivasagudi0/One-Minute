@@ -52,14 +52,13 @@ function Countdown() {
     }, 1000);
 }
 function CompleteChallenge() {
-    let completed = Number(localStorage.getItem("completed"));
+    clearInterval(timer);
 
-    if (!localStorage.getItem("completed")) {
-        completed = 0;
-    }
-
+    let completed = Number(localStorage.getItem("completed")) || 0;
     completed++;
 
     localStorage.setItem("completed", completed);
     document.getElementById("completed").textContent = completed;
+
+    document.getElementById("timer").textContent = "DONE!";
 }
