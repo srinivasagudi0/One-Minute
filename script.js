@@ -21,6 +21,8 @@ const challenges = [
     "Try to make someone laugh in under 60 seconds"
 ];
 
+let timer;
+
 
 function RandomChallenge() {
     let randomIndex = Math.floor(Math.random() * challenges.length);
@@ -32,21 +34,20 @@ function RandomChallenge() {
 }
 
 function Countdown() {
-    let timeLeft = 3;
-    time = document.getElementById("timer");
-    time = time.textContent= timeLeft;
-    console.log(timeLeft)
+    clearInterval(timer);
+
+    let timeLeft = 60;
+    let time = document.getElementById("timer");
+    time.textContent = timeLeft;
+
     timer = setInterval(() => {
         timeLeft--;
-        console.log(timeLeft);
-        
-        time = document.getElementById("timer");
         time.textContent = timeLeft;
-        if (timeLeft == 0) {
+
+        if (timeLeft === 0) {
             clearInterval(timer);
-            console.log("done"); 
             new Audio("beep.mp3").play();
+            console.log("done");
         }
-    }, 1000)
-    
+    }, 1000);
 }
