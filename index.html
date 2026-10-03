@@ -128,7 +128,7 @@ function Countdown() {
     clearInterval(timer);
 
     let timeLeft = 3;
-    
+
     let time = document.getElementById("timer");
     time.textContent = timeLeft;
 
@@ -160,8 +160,8 @@ function CompleteChallenge() {
 </script>
 
 <body>
+    <div className="game">
     <h1 class="title1">One Minute</h1>
-    <a href="about.html">How to play</a>
     <p class="caption">What all can you do in a Minute?</p>
     
 
@@ -175,8 +175,22 @@ function CompleteChallenge() {
     <br/>
     <h2><span>Completed challenges: <span id="completed">0</span>(for now)</span> </h2>
     
+    <div id="about" hidden>
+    <h1>About</h1>
+        <p>Relax! Breathe in.</p>
+        <p>Press the "Give me a challenge button"</p>
+        <p>DO the challenge while the <strong>timer</strong> ticks</p>
+        <p>Press I did it before the beep to win.</p>
+        <br />
+        <p>
+            I created this simple game because I want a strees releif game. Most games on the internet are voilent or have a big goal. 
+            This is a simple game that also makes me feel like 2016.
 
-    
+            By the Way i did all the challenges, some are not easy!
+        </p>
+    <button onclick="ShowGame()">Back</button>
+    </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
