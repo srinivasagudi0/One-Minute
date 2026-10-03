@@ -51,3 +51,15 @@ function Countdown() {
         }
     }, 1000);
 }
+function CompleteChallenge() {
+    let completed = Number(localStorage.getItem("completed"));
+
+    if (!localStorage.getItem("completed")) {
+        completed = 0;
+    }
+
+    completed++;
+
+    localStorage.setItem("completed", completed);
+    document.getElementById("completed").textContent = completed;
+}
