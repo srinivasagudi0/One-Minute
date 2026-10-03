@@ -83,10 +83,10 @@ const challenges=[
 let timer;
 function b() {
 let audio = new AudioContext();
-let beep = audio.createOscillator();
-beep.connect(audio.destination);
-beep.start();
-beep.stop(audio.currentTime + 0.2);
+let be = audio.createOscillator();
+be.connect(audio.destination);
+be.start();
+be.stop(audio.currentTime + 0.2);
 }
 function RC() {
 let randomIndex = Math.floor(Math.random() * challenges.length);
@@ -94,9 +94,9 @@ let challenge = challenges[randomIndex];
 document.getElementById("done-btn").hidden = false;
 a = document.getElementById("challenge");
 a.textContent = challenge;
-Countdown();
+C();
 }
-function Countdown() {
+function C() {
 clearInterval(timer);
 let timeLeft = 3;
 let time = document.getElementById("timer");
@@ -112,7 +112,7 @@ console.log("done");
 }
 }, 1000);
 }
-function CompleteChallenge() {
+function CC() {
 clearInterval(timer);
 document.getElementById("done-btn").hidden = true;
 let completed = Number(localStorage.getItem("completed")) || 0;
@@ -137,7 +137,7 @@ game.hidden = false;
 <h2 class="challenge-title">Your Challenge</h2>
 <p id="challenge"></p>
 <p class="timer">Time left: <span id="timer"></span></p>
-<button id="done-btn" onclick="CompleteChallenge()" hidden>I Did It!</button>
+<button id="done-btn" onclick="CC()" hidden>I Did It!</button>
 <div class="start-challenge">
 <button onclick="RC()">Give me a challenge!</button>
 </div>
