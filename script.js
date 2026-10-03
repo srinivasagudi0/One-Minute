@@ -28,7 +28,19 @@ function RandomChallenge() {
 
     a = document.getElementById("challenge");
     a.textContent = challenge;
-
-
-    
 }
+
+function Countdown() {
+    let timeLeft = 60;
+    console.log(timeLeft)
+    setInterval(() => {
+        timeLeft--;
+        if (timeLeft <= 0) {
+            console.log("done");    
+            clearInterval();
+        }
+        console.log(timeLeft);
+    }, 1000)
+}
+
+Countdown();
