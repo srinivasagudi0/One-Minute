@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OneMinute Fun</title>
-    <link rel="stylesheet" href="app.css">
+
 </head>
 
 <style>
@@ -157,10 +157,19 @@ function CompleteChallenge() {
     document.getElementById("timer").textContent = "DONE!";
 }
 
+function ShowAbout(){
+    game.hidden = true;
+    about.hidden = false;
+}
+
+function ShowGame(){
+    about.hidden = true;
+    game.hidden = false;
+}
 </script>
 
 <body>
-    <div className="game">
+    <div id="game">
     <h1 class="title1">One Minute</h1>
     <p class="caption">What all can you do in a Minute?</p>
     
@@ -174,10 +183,13 @@ function CompleteChallenge() {
     </div>
     <br/>
     <h2><span>Completed challenges: <span id="completed">0</span>(for now)</span> </h2>
+    <button onclick="ShowAbout()">About ⏭</button>
     
+    
+    </div>
     <div id="about" hidden>
     <h1>About</h1>
-        <p>Relax! Breathe in.</p>
+        <ul>Relax! Breathe in.</ul>
         <p>Press the "Give me a challenge button"</p>
         <p>DO the challenge while the <strong>timer</strong> ticks</p>
         <p>Press I did it before the beep to win.</p>
@@ -190,9 +202,7 @@ function CompleteChallenge() {
         </p>
     <button onclick="ShowGame()">Back</button>
     </div>
-    </div>
 
-    <script src="script.js"></script>
 </body>
 
 </html>
