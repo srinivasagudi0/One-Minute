@@ -27,6 +27,7 @@ let timer;
 function RandomChallenge() {
     let randomIndex = Math.floor(Math.random() * challenges.length);
     let challenge = challenges[randomIndex];
+    document.getElementById("done-btn").hidden = false;
 
     a = document.getElementById("challenge");
     a.textContent = challenge;
@@ -45,6 +46,7 @@ function Countdown() {
         time.textContent = timeLeft;
 
         if (timeLeft === 0) {
+            document.getElementById("done-btn").hidden = true;
             clearInterval(timer);
             new Audio("beep.mp3").play();
             console.log("done");
@@ -53,6 +55,7 @@ function Countdown() {
 }
 function CompleteChallenge() {
     clearInterval(timer);
+    document.getElementById("done-btn").hidden = true;
 
     let completed = Number(localStorage.getItem("completed")) || 0;
     completed++;
