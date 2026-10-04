@@ -11,19 +11,8 @@ button{padding:.8rem;font-weight:bold}
 [hidden]{display:none!important}
 </style>
 <script>
-const challenges=[
-"Do 10 push-ups",
-"Draw a cat without lifting your pen",
-"Find something older than you",
-"Write your name with your opposite hand",
-"Find 5 blue objects",
-"Balance on one foot for 30 seconds",
-"Name 10 countries",
-"Do 15 jumping jacks",
-"Make a paper airplane",
-"Draw yourself in 60 seconds"
-];
-let timer;
+z=["10 push-ups","Draw a cat without lifting your pen","Find something older than you","Write with your other hand","Find 5 blue things","Balance 30 seconds","Name 10 countries","15 jumping jacks","Make a paper plane","Draw yourself"]
+let i;
 let audio;
 function b(){
 let o=audio.createOscillator();
@@ -34,30 +23,30 @@ o.stop(audio.currentTime+.3)
 function RC() {
 audio||(audio=new AudioContext);
 audio.resume();
-let rI = Math.floor(Math.random() * challenges.length);
-let challenge = challenges[rI];
+let rI = Math.floor(Math.random() * z.length);
+let challenge = z[rI];
 document.getElementById("d").hidden = false;
 document.querySelector(".m").hidden=false;
 c.textContent = challenge;
 C();
 }
 function C() {
-clearInterval(timer);
-let timeLeft = 3;
+clearInterval(i);
+let s = 3;
 let time = document.getElementById("t");
-time.textContent = timeLeft;
-timer = setInterval(() => {
-timeLeft--;
-time.textContent = timeLeft;
-if (timeLeft === 0) {
+time.textContent = s;
+i = setInterval(() => {
+s--;
+time.textContent = s;
+if (s === 0) {
 document.getElementById("d").hidden = true;
-clearInterval(timer);
+clearInterval(i);
 b();
 }
 }, 1000);
 }
-function CC() {
-clearInterval(timer);
+function D() {
+clearInterval(i);
 document.getElementById("d").hidden = true;
 let t = Number(localStorage.getItem("n")) || 0;
 t++;
@@ -80,7 +69,7 @@ g.hidden = false;
 <h2 class="q">Your Challenge</h2>
 <p id="c"></p>
 <p class="m" hidden>Time left: <span id="t"></span></p>
-<button id="d" onclick="CC()" hidden>I Did It!</button>
+<button id="d" onclick="D()" hidden>I Did It!</button>
 <button onclick="RC()">Challenge Me!</button>
 <br/>
 <h2><span>Completed challenges: <span id="n">0</span>(for now)</span> </h2>
