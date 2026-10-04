@@ -7,20 +7,16 @@ body{margin:0;min-height:100vh;text-align:center;background:linear-gradient(135d
 #c{font-size:1.5rem;font-weight:bold;min-height:2rem}
 .m{font-weight:bold}
 #t{font:bold 4rem monospace}
+#a{font-size: 3rem;}
 button{padding:.8rem;font-weight:bold}
 [hidden]{display:none!important}
 </style>
 <script>
-z=["10 push-ups","Draw a cat without lifting your pen","Find something older than you","Write with your other hand","Find 5 blue things","Balance 30 seconds","Name 10 countries","15 jumping jacks","Make a paper plane","Draw yourself"]
+z=["10 push-ups","Draw a cat","Find something old","Write with your other hand","Find 5 blue things","Balance 30 seconds","Name 10 countries","15 jumping jacks","Make a paper plane","Draw yourself"]
 let i;
 let audio;
-function b(){
-let o=audio.createOscillator();
-o.connect(audio.destination);
-o.start();
-o.stop(audio.currentTime+.3)
-}
-function RC() {
+function b(){let o=audio.createOscillator();o.connect(audio.destination);o.start();o.stop(audio.currentTime+.3)}
+function RC(){
 audio||(audio=new AudioContext);
 audio.resume();
 let rI = Math.floor(Math.random() * z.length);
@@ -28,58 +24,45 @@ let challenge = z[rI];
 document.getElementById("d").hidden = false;
 document.querySelector(".m").hidden=false;
 c.textContent = challenge;
-C();
-}
-function C() {
+C();}
+function C(){
 clearInterval(i);
-let s = 3;
+let s =60;
 let time = document.getElementById("t");
 time.textContent = s;
 i = setInterval(() => {
 s--;
 time.textContent = s;
-if (s === 0) {
+if(s === 0){
 document.getElementById("d").hidden = true;
 clearInterval(i);
-b();
-}
-}, 1000);
-}
-function D() {
+b();}
+}, 1000);}
+function D(){
 clearInterval(i);
 document.getElementById("d").hidden = true;
 let t = Number(localStorage.getItem("n")) || 0;
 t++;
 localStorage.setItem("n", t);
 document.getElementById("n").textContent = t;
-document.getElementById("t").textContent = "DONE!";
-}
+document.getElementById("t").textContent = "DONE!";}
 function SA(){
 g.hidden = true;
-a.hidden = false;
-}
+a.hidden = false;}
 function SG(){
 a.hidden = true;
-g.hidden = false;
-}
+g.hidden = false;}
 </script>
 <div id="g">
 <h1 class="x">One Minute</h1>
-<p class="p">What all can you do in a Minute?</p>
+<p class="p">What can you do in a minute?</p>
 <h2 class="q">Your Challenge</h2>
 <p id="c"></p>
 <p class="m" hidden>Time left: <span id="t"></span></p>
 <button id="d" onclick="D()" hidden>I Did It!</button>
 <button onclick="RC()">Challenge Me!</button>
 <br/>
-<h2><span>Completed challenges: <span id="n">0</span>(for now)</span> </h2>
+<h2>Completed: <span id="n">0</span></h2>
 <button onclick="SA()">About</button>
 </div>
-<div id="a" hidden>
-<h1>About</h1>
-<ul>Relax & Breathe</ul>
-<p>Press the "Challenge Me!" button</p>
-<p>DO the challenge while the <strong>timer</strong> ticks</p>
-<p>Press I did it before the beep to win.</p>
-<button onclick="SG()">Back</button>
-</div>
+<div id="a" hidden><h1>About</h1><p>Relax & breathe. Hit Challenge Me and finish before the beep!</p><button onclick="SG()">Back</button></div>
