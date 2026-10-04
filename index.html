@@ -9,6 +9,7 @@
 body{
 background: linear-gradient(135deg, #F3E5AB, #D4AF37, #C68B59, #8B4513);
 min-height: 100dvh;
+margin: 0;
 font-size:1.25rem;
 text-align: center;
 }
@@ -22,11 +23,11 @@ margin: 0;
 padding: 1rem;
 font-family: 'Courier New', Courier, monospace;
 background-color: rgba(240, 255, 240, 0.241);}
-.caption{
+.cap{
 margin-top: 0;
 color: rgb(127, 9, 246);
 font-size: 10px;}
-.challenge-title{
+.c-ti{
 color: red;
 font-size: 2rem;
 margin-top: 3rem;}
@@ -36,7 +37,7 @@ font-weight: bold;
 min-height: 2rem;
 margin: 1.5rem auto;
 max-width: 70%;}
-.timer{
+.tim{
 font-size: 1.2rem;
 font-weight: bold;
 margin: 1rem 0;}
@@ -79,6 +80,7 @@ function RC() {
 let rI = Math.floor(Math.random() * challenges.length);
 let challenge = challenges[rI];
 document.getElementById("done-btn").hidden = false;
+document.querySelector(".tim").hidden=false;
 a = document.getElementById("challenge");
 a.textContent = challenge;
 C();
@@ -119,10 +121,10 @@ game.hidden = false;
 <body>
 <div id="game">
 <h1 class="title1">One Minute</h1>
-<p class="caption">What all can you do in a Minute?</p>
-<h2 class="challenge-title">Your Challenge</h2>
+<p class="cap">What all can you do in a Minute?</p>
+<h2 class="c-ti">Your Challenge</h2>
 <p id="challenge"></p>
-<p class="timer">Time left: <span id="timer"></span></p>
+<p class="tim" hidden>Time left: <span id="timer"></span></p>
 <button id="done-btn" onclick="CC()" hidden>I Did It!</button>
 <button onclick="RC()">Challenge Me!</button>
 <br/>
