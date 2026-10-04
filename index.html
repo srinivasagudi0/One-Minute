@@ -23,7 +23,7 @@ let rI = Math.floor(Math.random() * z.length);
 let challenge = z[rI];
 document.getElementById("d").hidden = false;
 document.querySelector(".m").hidden=false;
-c.textContent = challenge;
+document.getElementById("c").textContent = challenge;
 C();}
 function C(){
 clearInterval(i);
@@ -47,11 +47,11 @@ localStorage.setItem("n", t);
 document.getElementById("n").textContent = t;
 document.getElementById("t").textContent = "DONE!";}
 function SA(){
-g.hidden = true;
-a.hidden = false;}
+document.getElementById("g").hidden = true;
+document.getElementById("a").hidden = false;}
 function SG(){
-a.hidden = true;
-g.hidden = false;}
+document.getElementById("a").hidden = true;
+document.getElementById("g").hidden = false;}
 </script>
 <div id="g">
 <h1 class="x">One Minute</h1>
